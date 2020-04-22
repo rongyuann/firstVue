@@ -8,6 +8,10 @@ import './assets/css/global.css'
 
 // 导入axios
 import axios from 'axios'
+
+// 导入tree-grid
+import TreeTable from 'vue-table-with-tree-grid'
+
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1'
 // 需要授权的API须在请求头使用authorization字段提供token令牌
@@ -17,6 +21,9 @@ axios.interceptors.request.use(config => {
   return config
 })
 Vue.prototype.$http = axios
+
+// 全局注册tree-grid
+Vue.component('tree-table', TreeTable)
 
 Vue.config.productionTip = false
 

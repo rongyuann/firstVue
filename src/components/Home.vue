@@ -103,6 +103,9 @@ export default {
     > div {
       display: flex;
       align-items: center;
+      > img {
+        margin-left: 20px;
+      }
     }
   }
   .el-aside {
