@@ -56,10 +56,7 @@ export default {
             res = res.data
             console.log(res)
             if (res.meta.status === 200) {
-              this.$message({
-                message: '登录成功',
-                type: 'success'
-              })
+              this.$message.success('登录成功')
               // 1.登录成功后的token保存到客户端的sessionStorage中
               // 1.1 项目中的除登录外其他API接口必须在登录后才能访问
               // 1.2 token只在当前网站打开期间生效，故保存在sessionStorage
