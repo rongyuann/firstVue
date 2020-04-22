@@ -3,8 +3,14 @@ html, body ,#app {
     height: 100%;
     margin: 0;
     padding: 0;
+    min-width: 1366px;
 }
 .el-table {
     margin: 20px 0;
     font-size: 12px;
+}
+
+.el-card {
+    margin: 15px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }

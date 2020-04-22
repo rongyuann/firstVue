@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip, Pagination, Dialog, MessageBox } from 'element-ui'
+import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip, Pagination, Dialog, MessageBox, Tag, Tree, Select, Option } from 'element-ui'
 
 Vue.use(Button).use(Tooltip)
 // Form表单
@@ -34,8 +34,19 @@ Vue.use(Row).use(Col)
 // Table表格
 Vue.use(Table).use(TableColumn)
 
+// 状态按钮
 Vue.use(Switch)
 
+// 分页展示
 Vue.use(Pagination)
 
+// 消息弹框
 Vue.use(Dialog)
+
+Vue.use(Tag)
+
+// 树形控件
+Vue.use(Tree)
+
+// 下拉菜单
+Vue.use(Select).use(Option)
