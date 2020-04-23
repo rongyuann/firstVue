@@ -35,9 +35,9 @@
           <el-tag v-else type="warning">三级</el-tag>
         </template>
         <!--操作-->
-        <template slot="operation">
+        <template slot="operation" slot-scope="scope">
           <el-button type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
-          <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
+          <el-button type="danger" @click="removeCategoryById(scope.row.cat_id)" icon="el-icon-delete" size="mini">删除</el-button>
         </template>
       </tree-table>
 
@@ -76,9 +76,9 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-    <el-button @click="addCategoryDialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="addCategory">确 定</el-button>
-  </span>
+        <el-button @click="addCategoryDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addCategory">确 定</el-button>
+      </span>
     </el-dialog>
   </div>
 
@@ -192,6 +192,23 @@ export default {
       this.addCategoryForm.cat_pid = 0
       this.addCategoryForm.cat_level = 0
       this.selectedKeys = []
+    },
+    // 根据id删除商品分类
+    removeCategoryById (categoryId) {
+      console.log(categoryId)
+      this.$confirm('此操作将删除该商品分类，是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(() => {
+        this.$http.delete(`categories/${categoryId}`).then(res => {
+          res = res.data
+          if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+          this.$message.success(res.meta.msg)
+          this.getCategoryList()
+        })
+      }).catch(() => {
+        this.$message.info('已取消删除')
+      })
     }
   }
 }

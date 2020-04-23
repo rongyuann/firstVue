@@ -47,7 +47,6 @@ export default {
     }
   },
   methods: {
-    // 点击重置按钮
     login () {
       this.$refs.loginFormRef.validate(valid => {
         console.log(valid)
@@ -74,6 +73,7 @@ export default {
         }
       })
     },
+    // 点击重置按钮
     resetLoginForm () {
       console.log(this)
       this.$refs.loginFormRef.resetFields()

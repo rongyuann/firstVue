@@ -162,7 +162,7 @@ export default {
       queryInfo: {
         query: '',
         pagenum: 1, // 当前页码
-        pagesize: 2 // 每页显示条数
+        pagesize: 3 // 每页显示条数
       },
       userList: [],
       total: 0,
@@ -275,6 +275,7 @@ export default {
     },
     // 监听修改用户对话框的关闭事件，重置表单
     editDialogClosed () {
+      this.$message.info('已取消修改用户')
       this.$refs.editFormRef.resetFields()
     },
     editUserInfo () {
@@ -294,7 +295,7 @@ export default {
     // 根据ID删除对应用户信息
     removeUserById (userId) {
       // 弹框提示是否删除数据
-      this.$confirm('此操作将删除该用户, 是否继续?', '提示', {
+      this.$confirm('此操作将删除该用户，是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -331,7 +332,7 @@ export default {
 
       this.setRoleDialogVisible = false
     },
-    // 监听分配角色对话框的关闭事件，重置表单
+    // 监听分配角色对话框的关闭事件, 重置表单
     setRoleDialogClosed () {
       this.selectedRoleId = ''
       this.userInfo = {}
