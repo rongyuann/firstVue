@@ -10,7 +10,7 @@
       <!--卡片视图区域-->
       <el-card>
         <!--警告区域-->
-        <el-alert :closable="false" title="注意：只允许为第三级分类设置相关参数" type="warning" show-icon></el-alert>
+        <el-alert :closable="false" title="注意：只允许为第三级分类设置相关参数嗷！" type="warning" show-icon></el-alert>
         <!--商品选择区域-->
         <el-row class="cat_opt">
           <el-col>
