@@ -55,6 +55,8 @@ export default {
             res = res.data
             console.log(res)
             if (res.meta.status === 200) {
+              // 向组件传递登录的username
+              this.$store.commit('setLoginName', this.loginForm.username)
               this.$message.success('登录成功')
               // 1.登录成功后的token保存到客户端的sessionStorage中
               // 1.1 项目中的除登录外其他API接口必须在登录后才能访问

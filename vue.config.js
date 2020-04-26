@@ -12,6 +12,7 @@ module.exports = {
       config.set('externals', {
         vue: 'Vue',
         'vue-router': 'VueRouter',
+        vuex: 'Vuex',
         axios: 'axios',
         lodash: '_',
         echarts: 'echarts',
