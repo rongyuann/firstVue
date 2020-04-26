@@ -62,7 +62,8 @@
       <el-dialog
         title="添加用户"
         :visible.sync="addDialogVisible"
-        width="50%">
+        width="50%"
+        @close="addDialogClosed">
         <span>
           <el-form :model="addForm" :rules="addFormRules" ref="addFormRef">
             <el-form-item label="用户名" prop="username">
@@ -336,6 +337,9 @@ export default {
     setRoleDialogClosed () {
       this.selectedRoleId = ''
       this.userInfo = {}
+    },
+    addDialogClosed () {
+      this.$refs.addFormRef.resetFields()
     }
   }
 }

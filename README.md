@@ -1,24 +1,83 @@
-# vue_shop
+### 电商后台管理系统
 
-## Project setup
-```
-npm install
-```
+#### 技术栈分析
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### 前端
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue.js
+- Element-UI
+- Echarts
 
-### Lints and fixes files
-```
-npm run lint
-```
+##### 后端
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Express（Node.js）
+
+##### 数据库
+
+- MySQL
+
+
+
+#### 功能需求分析
+
+##### 登录注册
+
+- 获取登录页面用户名和密码的表单数据
+- 表单预验证和POST传递数据验证
+
+- sessionStorage保存登录用户的对应token值
+- 路由导航守卫监听非login页面的直接跳转
+
+##### 用户管理
+
+- 分页获取 / 查询用户列表
+- 添加用户
+- 邮箱和手机号的自定义验证规则
+- 编辑 / 删除用户
+- 分配用户角色
+
+##### 权限管理
+
+- 分页获取权限数据（分等级）
+- 权限列表数据的增删改查
+
+##### 角色管理
+
+- 分页获取角色数据
+- 角色列表数据的增删改查
+
+##### 商品管理
+
+- 分页获取商品数据
+- 动态参数和静态属性的分别获取
+- 商品列表数据的增删改查
+- 图片上传（headers中的Authorization需自行添加sessionStorage中的token）
+
+##### 订单数据
+
+- 分页获取订单列表数据
+- 订单列表数据的增删改查
+- 修改地址的省市区 / 县联动效果（级联选择器）
+
+##### 数据统计
+
+- ECharts展示基于时间统计的折线图
+
+
+
+#### 小结
+
+##### 性能优化
+
+通过build生成打包报告来分析影响性能的因素，包括资源 、依赖项体积和速度统计等
+
+- CDN按需导入第三方模块
+- 路由懒加载
+- Gzip压缩
+
+##### 心得
+
+- 通过编写电商后台管理系统来巩固所学的Vue.js以及相应Element UI的使用
+- 表单验证，数据的可视化以及axios和后台的交互
+- 进一步熟悉了前后端分离的交互模式
+
