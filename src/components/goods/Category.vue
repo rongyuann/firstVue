@@ -36,7 +36,7 @@
         </template>
         <!--操作-->
         <template slot="operation" slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
+          <el-button v-if="scope.row.cat_level === 2" type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
           <el-button type="danger" @click="removeCategoryById(scope.row.cat_id)" icon="el-icon-delete" size="mini">删除</el-button>
         </template>
       </tree-table>

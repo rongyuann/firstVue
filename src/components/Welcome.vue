@@ -1,12 +1,18 @@
 <template>
   <div>
-    <h3>Welcome</h3>
+    <h1>Welcome Back ！</h1>
+    <h2>{{username}}</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Welcome'
+  name: 'Welcome',
+  data () {
+    return {
+      username: 'Hayden'
+    }
+  }
 }
 </script>
 

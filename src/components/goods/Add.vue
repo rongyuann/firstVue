@@ -11,14 +11,16 @@
       <el-card>
         <el-alert :closable="false" title="添加商品信息" type="info" show-icon center></el-alert>
         <!--步骤条区域(字符串转化为数字)-->
-        <el-steps :space="200" :active="activeIndex - 0" finish-status="success" align-center>
-          <el-step title="基本信息"></el-step>
-          <el-step title="商品参数"></el-step>
-          <el-step title="商品属性"></el-step>
-          <el-step title="商品图片"></el-step>
-          <el-step title="商品内容"></el-step>
-          <el-step title="完成"></el-step>
-        </el-steps>
+        <div class="steps">
+          <el-steps :space="200" :active="activeIndex - 0" finish-status="success" align-center>
+            <el-step title="基本信息"></el-step>
+            <el-step title="商品参数"></el-step>
+            <el-step title="商品属性"></el-step>
+            <el-step title="商品图片"></el-step>
+            <el-step title="商品内容"></el-step>
+            <el-step title="完成"></el-step>
+          </el-steps>
+        </div>
         <el-form :model="addGoodForm"
                  :rules="addGoodFormRules"
                  ref="addGoodFormRef"
@@ -320,5 +322,9 @@ export default {
   }
   .addGoodBtn {
     margin: 20px;
+  }
+  .steps {
+    width: 700px;
+    margin: 0 auto;
   }
 </style>

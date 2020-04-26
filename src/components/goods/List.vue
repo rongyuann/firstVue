@@ -33,7 +33,7 @@
         </el-table-column>
         <el-table-column label="操作" width="130px">
           <template slot-scope="scope">
-            <el-button type="primary" class="el-icon-edit" size="mini"></el-button>
+            <el-button type="warning" @click="showDetailDialog(scope.row.goods_id)" class="el-icon-view" size="mini"></el-button>
             <el-button type="danger" @click="removeGoodsById(scope.row.goods_id)" class="el-icon-delete" size="mini"></el-button>
           </template>
         </el-table-column>
@@ -51,6 +51,33 @@
         background>
       </el-pagination>
     </el-card>
+
+    <!--展示商品信息对话框-->
+    <el-dialog
+      title="商品信息"
+      :visible.sync="detailDialogVisible"
+      width="50%">
+      <el-form :model="goodsDetailList">
+        <el-form-item label="商品名称">
+          <el-input v-model="goodsDetailList.goods_name"></el-input>
+        </el-form-item>
+        <el-form-item label="动态参数">
+          <template>
+            <el-tag v-for="(item,index) in goodsDetailList.attrs" :key="index"  v-show="item.attr_sel === 'many'">
+              {{item.attr_name}}
+              <span v-show="item.attr_sel === 'only'">暂无</span>
+            </el-tag>
+          </template>
+        </el-form-item>
+        <el-form-item label="静态属性">
+          <template>
+            <el-tag v-for="(item,index) in goodsDetailList.attrs" :key="index"  v-show="item.attr_sel === 'only'">
+              {{item.attr_name}}
+            </el-tag>
+          </template>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -65,7 +92,9 @@ export default {
         pagesize: 10 // 每页显示条数
       },
       total: 0, // 总页数
-      goodsList: [] // 商品列表
+      goodsList: [], // 商品列表
+      detailDialogVisible: false,
+      goodsDetailList: {}
     }
   },
   created () {
@@ -88,6 +117,13 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.goodsList = res.data.goods
       this.total = res.data.total
+    },
+    // 根据id查询对应商品信息并展示
+    async showDetailDialog (goodsId) {
+      this.detailDialogVisible = true
+      const { data: res } = await this.$http.get(`/goods/${goodsId}`)
+      console.log(res.data)
+      this.goodsDetailList = res.data
     },
     // 根据id删除对应商品
     removeGoodsById (goodsId) {
